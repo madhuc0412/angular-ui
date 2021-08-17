@@ -1,0 +1,82 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<div class="container">
+    <br>
+
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <header class="card-header">
+                    <a href="/login" class="float-right btn btn-outline-primary mt-1">Log in</a>
+                    <h4 class="card-title mt-2">Sign up</h4>
+                </header>
+                <article class="card-body">
+                    <form novalidate (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label>First name </label>
+                                <input type="text" class="form-control" id="txtFirstName" name="FirstName"
+                                    [(ngModel)]="model.FirstName" required #FirstName="ngModel"
+                                    [ngClass]="{'is-invalid': f.submitted &&  FirstName.invalid }">
+
+                                <div style="color:red" *ngIf="f.submitted && FirstName.errors">
+                                    <p *ngIf="FirstName.errors.required">FirstName is required.</p>
+                                </div>
+
+                            </div> <!-- form-group end.// -->
+                            <div class="col form-group">
+                                <label>Last name</label>
+                                <input type="text" class="form-control" id="txtLastName" name="LastName"
+                                    [(ngModel)]="model.LastName" required #LastName="ngModel"
+                                    [ngClass]="{'is-invalid': f.submitted &&  LastName.invalid }">
+
+                                <div style="color:red" *ngIf="f.submitted && LastName.errors">
+                                    <p *ngIf="LastName.errors.required">LastName is required.</p>
+                                </div>
+                            </div> <!-- form-group end.// -->
+                        </div> <!-- form-row end.// -->
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input type="text" class="form-control" id="txtUserEmail" name="UserEmail"
+                                [(ngModel)]="model.UserEmail" required #UserEmail="ngModel"
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                [ngClass]="{'is-invalid': f.submitted &&  UserEmail.invalid }">
+
+                            <div style="color:red" *ngIf="f.submitted && UserEmail.errors">
+                                <p *ngIf="UserEmail.errors.required">User Email is required.</p>
+                                <p *ngIf="UserEmail.errors.pattern">Please enter valid email.</p>
+                            </div>
+                            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div> <!-- form-group end.// -->
+
+                        <div class="form-group">
+                            <label>Create password</label>
+                            <input type="password" class="form-control" id="txtUserPassword" name="UserPassword"
+                                [(ngModel)]="model.UserPassword" required #UserPassword="ngModel"
+                                [ngClass]="{'is-invalid': f.submitted &&  UserPassword.invalid }">
+
+                            <div style="color:red" *ngIf="f.submitted && UserPassword.errors">
+                                <p *ngIf="UserPassword.errors.required">Password is required.</p>
+                            </div>
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Register </button>
+                        </div> <!-- form-group// -->
+
+                    </form>
+                </article> <!-- card-body end .// -->
+                <div class="border-top card-body text-center">Have an account? <a href="/login">Log In</a></div>
+            </div> <!-- card.// -->
+        </div> <!-- col.//-->
+
+    </div> <!-- row.//-->
+
+
+</div>
+<!--container end.//-->

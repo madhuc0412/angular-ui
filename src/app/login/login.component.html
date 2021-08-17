@@ -1,0 +1,56 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<body>
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Login Form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form class="form" novalidate (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="UserEmail" class="text-info">User Email:</label><br>
+                                <input type="text" class="form-control" id="txtUserEmail" name="UserEmail"
+                                    [(ngModel)]="model.UserEmail" required #UserEmail="ngModel"
+                                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                    [ngClass]="{'is-invalid': f.submitted &&  UserEmail.invalid }">
+
+                                <div style="color:red" *ngIf="f.submitted && UserEmail.errors">
+                                    <p *ngIf="UserEmail.errors.required">User Email is required.</p>
+                                    <p *ngIf="UserEmail.errors.pattern">Please enter valid email.</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="UserPassword" class="text-info">Password:</label><br>
+                                <input type="password" class="form-control" id="txtUserPassword" name="UserPassword"
+                                [(ngModel)]="model.UserPassword" required #UserPassword="ngModel"
+                                [ngClass]="{'is-invalid': f.submitted &&  UserPassword.invalid }">
+
+                            <div style="color:red" *ngIf="f.submitted && UserPassword.errors">
+                                <p *ngIf="UserPassword.errors.required">User Password is required.</p>
+                            </div>
+
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="remember-me" class="text-info"></label><br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="/signup" class="text-info">Register here</a>
+                            </div> -->
+                            <div class="form-group">
+                                <div class="">
+                                    <button type="button" class="btn btn-info btn-md" type="submit">Login</button>&nbsp;
+                                    <a href="/signup" style="float:right" class="link-primary">Register here</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
